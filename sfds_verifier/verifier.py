@@ -149,10 +149,19 @@ def write_file(path, content):
     with open(path, 'wb') as f:
         f.write(content)
 
-
+def fetch_blob(blob_uri):
+    b64head='data:application/octet-stream;base64,'
+    if blob_uri.startswith(b64head):
+        return base64url_decode(blob_uri[len(b64head):])
+    if blob_uri.startswith('http'):
+        resp = requests.get(blob_uri)
+        content = resp.content
+        if content.startswith(b64head.encode()):
+            return fetch_blob(content.decode())
+        return content
 
 def make_files(blob, claims):
-    all_files = base64url_decode(blob)
+    all_files = fetch_blob(blob)
     for claim in claims:
         claim_value = claims[str(claim)]
         claim_json=json.loads(claim_value)
