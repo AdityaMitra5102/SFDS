@@ -1,4 +1,4 @@
-# SFDS - Selective File Disclosure Standard
+# SFDS - Selective File Disclosure System
 
 ## Demo usage
 
