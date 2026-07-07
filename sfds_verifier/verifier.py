@@ -135,10 +135,11 @@ def verify_sd_jwt(jwt_path, pub_key_path, disclosures):
 
 
 def decrypt_file(key, data):
-	payload = cbor2.loads(data)
-	nonce = payload["nonce"]
-	tag = payload["tag"]
-	ciphertext = payload["ciphertext"]
+	tag = data[-16:]
+	data = data [:-16]
+	nonce = data[-12:]
+	data = data [:-12]
+	ciphertext = data
 	cipher = AES.new(key, AES.MODE_GCM, nonce=nonce)
 	return cipher.decrypt_and_verify(ciphertext, tag)
 	
