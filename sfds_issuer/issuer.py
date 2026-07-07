@@ -13,16 +13,12 @@ import cbor2
 
 def encrypt_file(path):
 	key = get_random_bytes(32)
-	nonce = get_random_bytes(16)
+	nonce = get_random_bytes(12)
 	with open(path, "rb") as f:
 		plaintext = f.read()
 	cipher = AES.new(key, AES.MODE_GCM, nonce=nonce)
 	ciphertext, tag = cipher.encrypt_and_digest(plaintext)
-	payload = cbor2.dumps({
-		"nonce": nonce,
-		"tag": tag,
-		"ciphertext": ciphertext
-	})
+	payload = ciphertext+nonce+tag
 	return key, payload
 
 def decrypt_file(key, data):
@@ -41,6 +37,7 @@ def hash_file(path):
 	return h.hexdigest()	
     
 def get_all_files(root_dir="."):
+	b64head='data:application/octet-stream;base64,'
 	file_content =	bytearray()
 	file_list = []
 	for dirpath, dirnames, filenames in os.walk(root_dir):
@@ -59,7 +56,7 @@ def get_all_files(root_dir="."):
 			}
 			file_content.extend(file_enc)
 			file_list.append(json.dumps(file_data))
-		file_content_b64=base64.urlsafe_b64encode(file_content).decode()
+		file_content_b64=b64head+base64.urlsafe_b64encode(file_content).decode()
 	return file_list, file_content_b64
 		
 def save_jwk(path):
