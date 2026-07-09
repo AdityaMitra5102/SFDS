@@ -14,22 +14,25 @@ def base64url_encode(b):
     return base64.urlsafe_b64encode(b).rstrip(b'=').decode()
 
 def make_presentation(presentations):
-	final_presentation='~'
+	final_presentation=''
 	pres=presentations.split('~')
+	jwt=pres[0]
+	pres=pres[1:]
 	for presentation in pres:
 		if not presentation:
 			continue
 		decoded = base64url_decode(presentation).decode()
-		value = json.loads(json.loads(decoded)[1])
+		val = json.loads(decoded)[1]
+		value = val #json.loads(val)
 		path = value['path']
 		choice = input(f"Do you want to disclose {path} (y/N)?")
 		if choice.lower() == 'y':
 			print(f'Adding {path} \n')
 			final_presentation +=presentation + '~'
-	return final_presentation
+	return jwt+'~'+final_presentation
 		
 def main():
-	file="disclosure.txt"
+	file="jwt.txt"
 	presentations=open(file, 'r').read()
 	pres=make_presentation(presentations)
 	with open('presentation.txt', 'w') as f:

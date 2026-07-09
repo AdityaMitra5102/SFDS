@@ -34,7 +34,7 @@ def hash_file(path):
 	with open(path, 'rb') as f:
 		while chunk := f.read(8192):
 			h.update(chunk)
-	return h.hexdigest()	
+	return base64.urlsafe_b64encode(h.digest()).decode().rstrip('=')
     
 def get_all_files(root_dir="."):
 	b64head='data:application/octet-stream;base64,'
@@ -51,11 +51,11 @@ def get_all_files(root_dir="."):
 				'offset': len(file_content),
 				'length': len(file_enc),
 				'hash': file_integrity,
-				'key': base64.urlsafe_b64encode(key).decode(),
+				'key': base64.urlsafe_b64encode(key).decode().rstrip('='),
 				'alg': 3, #AES256GCM COSE
 			}
 			file_content.extend(file_enc)
-			file_list.append(json.dumps(file_data))
+			file_list.append(file_data)
 		file_content_b64=b64head+base64.urlsafe_b64encode(file_content).decode()
 	return file_list, file_content_b64
 		
@@ -101,11 +101,8 @@ def main(path):
 	key = load_jwk("issuer_key.json")
 	save_pub("issuer_pub.json", key)
 	sd = create_sd(key, path)
-	jwt, disclosure = get_jwt(sd)
-	with open('disclosure.txt', 'w') as f:
-		f.write(disclosure)
 	with open('jwt.txt', 'w') as f:
-		f.write(jwt)
+		f.write(sd)
 		
 if __name__=='__main__':
 	main('example')

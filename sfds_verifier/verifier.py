@@ -35,6 +35,8 @@ def hash_disclosure(disclosure):
 
 def decode_disclosure(disclosure):
     parsed = json.loads(base64url_decode(disclosure))
+    print(disclosure)
+    print(parsed)
     if len(parsed) == 3:
         salt, claim_name, claim_value = parsed
         return "claim", salt, claim_name, claim_value
@@ -109,8 +111,8 @@ def verify_disclosure(payload, disclosure):
         return {"type": "array_element", "key": None, "value": claim_value}
 
 
-def verify_sd_jwt(jwt_path, pub_key_path, disclosures):
-    token = read_file(jwt_path)
+def verify_sd_jwt(jwt, pub_key_path, disclosures):
+    token = jwt
     pub_key = load_jwk(pub_key_path)
 
     print("\n── Step 1: Verifying JWT signature ───────────────────────────────")
@@ -140,6 +142,12 @@ def decrypt_file(key, data):
 	nonce = data[-12:]
 	data = data [:-12]
 	ciphertext = data
+	print("Tag ", base64url_encode(tag))
+	print("Nonce ", base64url_encode(nonce))
+	print("Cipher ", base64url_encode(ciphertext))
+
+
+	
 	cipher = AES.new(key, AES.MODE_GCM, nonce=nonce)
 	return cipher.decrypt_and_verify(ciphertext, tag)
 	
@@ -165,7 +173,7 @@ def make_files(blob, claims):
     all_files = fetch_blob(blob)
     for claim in claims:
         claim_value = claims[str(claim)]
-        claim_json=json.loads(claim_value)
+        claim_json=claim_value
         path=claim_json['path']
         offset=claim_json['offset']
         length=claim_json['length']
@@ -173,7 +181,7 @@ def make_files(blob, claims):
         key=base64url_decode(claim_json['key'])
         file_content_enc=all_files[offset:offset+length]
         file_content=decrypt_file(key, file_content_enc)
-        calc_hash=hashlib.sha256(file_content).hexdigest()
+        calc_hash=base64url_encode(hashlib.sha256(file_content).digest())
         if(calc_hash==hash):
             write_file(path, file_content)
         else:
@@ -183,7 +191,9 @@ def make_files(blob, claims):
 def main():
     raw_disclosures = read_file('presentation.txt')
     disclosures = [d for d in raw_disclosures.split('~') if d]
-    payload, claims= verify_sd_jwt('jwt.txt', 'issuer_pub.json', disclosures)
+    jwt = disclosures[0]
+    disclosures = disclosures[1:]
+    payload, claims= verify_sd_jwt(jwt, 'issuer_pub.json', disclosures)
     blob=payload['blob']
     make_files(blob, claims)
 

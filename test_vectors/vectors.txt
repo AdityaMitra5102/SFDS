@@ -1,0 +1,114 @@
+Input files:
+	File 1:
+		Path: example\test1.txt
+		Plaintext content: test1
+		Plaintest SHA-256 hash (URL Safe B64 Encoded): hwKmdFRN69WkkKB9ZeFmDnbwc5yzxu9J0vxI2I-KQro
+		
+	File 2:
+		Path: example\test2.txt
+		Plaintext content: test2
+		Plaintest SHA-256 hash (URL Safe B64 Encoded): jPrDtbgHl5dyFYeRzCbrHjjR0WiSuGFKF5InAz-BI8g
+		
+	File 3:
+		Path: example\subd\test3.txt
+		Plaintext content: test3
+		Plaintest SHA-256 hash (URL Safe B64 Encoded): AYxnosMO2Zd-Hd3-mMrFQhZdrDVc-XZMkaNiYT51KTM
+			
+Issuer Parameters:
+	Signing algorithm: ES256
+	Issuer pulic key (COSE Encoded):
+		{
+		  "crv": "P-256",
+		  "kty": "EC",
+		  "x": "Ie9X6X9D2m8Oh3k1WXmyJNR_aZpROb7DDpDBstFc9yQ",
+		  "y": "QFQmYn0jObNveUyUbXnrIuKVfjbUac88J7P1AWc9yoM"
+		}
+	Issuer private key (COSE Encoded):
+		{
+		  "crv": "P-256",
+		  "d": "NyXgWlmQ-PzWi0dzOBWC168MTPXXt0R98Q3AAtnroQI",
+		  "kty": "EC",
+		  "x": "Ie9X6X9D2m8Oh3k1WXmyJNR_aZpROb7DDpDBstFc9yQ",
+		  "y": "QFQmYn0jObNveUyUbXnrIuKVfjbUac88J7P1AWc9yoM"
+		}
+	_sd_alg value: sha256
+	
+Per-file disclosure data:
+	File 1:
+		Salt: avy3ozSTqLZDMLlUHQI8jQ
+		File descriptor before encoding: {'path': 'example\\test1.txt', 'offset': 0, 'length': 36, 'hash': 'hwKmdFRN69WkkKB9ZeFmDnbwc5yzxu9J0vxI2I-KQro', 'key': 'RvPUIIaLLZ2Oajh0f5EmxqzkTv1hffiTDLzeZmD3lNE', 'alg': 3}
+		Base64URL encoded disclosure: WyJhdnkzb3pTVHFMWkRNTGxVSFFJOGpRIiwgeyJwYXRoIjogImV4YW1wbGVcXHRlc3QxLnR4dCIsICJvZmZzZXQiOiAwLCAibGVuZ3RoIjogMzYsICJoYXNoIjogImh3S21kRlJONjlXa2tLQjlaZUZtRG5id2M1eXp4dTlKMHZ4STJJLUtRcm8iLCAia2V5IjogIlJ2UFVJSWFMTFoyT2FqaDBmNUVteHF6a1R2MWhmZmlUREx6ZVptRDNsTkUiLCAiYWxnIjogM31d
+		Disclosure digest: DXpSzubBkS1dHbcqaUT6oVUV8HVAmyYuwzOpeOM-mxo
+	
+	File 2:
+		Salt: lWhihnN-FDe0VtLGEm4a8g
+		File descriptor before encoding: {'path': 'example\\test2.txt', 'offset': 36, 'length': 36, 'hash': 'jPrDtbgHl5dyFYeRzCbrHjjR0WiSuGFKF5InAz-BI8g', 'key': 'JLhRPpAGl0tU3aSCcK0_Ep2-1OLlmeG3k2OxtbGXRsU', 'alg': 3}
+		Base64URL encoded disclosure: WyJsV2hpaG5OLUZEZTBWdExHRW00YThnIiwgeyJwYXRoIjogImV4YW1wbGVcXHRlc3QyLnR4dCIsICJvZmZzZXQiOiAzNiwgImxlbmd0aCI6IDM2LCAiaGFzaCI6ICJqUHJEdGJnSGw1ZHlGWWVSekNickhqalIwV2lTdUdGS0Y1SW5Bei1CSThnIiwgImtleSI6ICJKTGhSUHBBR2wwdFUzYVNDY0swX0VwMi0xT0xsbWVHM2syT3h0YkdYUnNVIiwgImFsZyI6IDN9XQ
+		Disclosure digest: EEZmZLkr1zN576F949D6FpHrw6cnOCN0Spq1v56eYmM
+		
+	File 3:
+		Salt: yDaYXZNst8--At2q-nhkgQ
+		File descriptor before encoding: {'path': 'example\\subd\\test3.txt', 'offset': 72, 'length': 35, 'hash': 'AYxnosMO2Zd-Hd3-mMrFQhZdrDVc-XZMkaNiYT51KTM', 'key': 'hxuKT_pA0Pf9e1z6kjty-4zALJ5KdhtmNXlowVRIQ64', 'alg': 3}
+		Base64URL encoded disclosure: WyJ5RGFZWFpOc3Q4LS1BdDJxLW5oa2dRIiwgeyJwYXRoIjogImV4YW1wbGVcXHN1YmRcXHRlc3QzLnR4dCIsICJvZmZzZXQiOiA3MiwgImxlbmd0aCI6IDM1LCAiaGFzaCI6ICJBWXhub3NNTzJaZC1IZDMtbU1yRlFoWmRyRFZjLVhaTWthTmlZVDUxS1RNIiwgImtleSI6ICJoeHVLVF9wQTBQZjllMXo2a2p0eS00ekFMSjVLZGh0bU5YbG93VlJJUTY0IiwgImFsZyI6IDN9XQ
+		Disclosure digest: 8Q-8ucovy_NPfs_VIVc492X2aeWD-NSWms6dWwbq_UU
+		
+Encryption data:
+	File 1:
+		AES Key: RvPUIIaLLZ2Oajh0f5EmxqzkTv1hffiTDLzeZmD3lNE
+		Nonce: MGt5DBiJJPA5f597
+		Ciphertext: XVC1ZDvaBwA
+		AEAD tag: zpAtk7ko7Zfmgz1NiAoCBA
+		Offset: 0
+		Length: 36
+		
+	File 2:
+		AES Key: JLhRPpAGl0tU3aSCcK0_Ep2-1OLlmeG3k2OxtbGXRsU
+		Nonce: 9f-FrWVGtXYFBrMy
+		Ciphertext: NXVyIFQc75A
+		AEAD tag: wcwibvwmhwqE9ghr5fNyVQ
+		Offset: 36
+		Length: 36
+		
+	File 3:
+		AES Key: AYxnosMO2Zd-Hd3-mMrFQhZdrDVc-XZMkaNiYT51KTM
+		Nonce: ac3gjpJT76kg_eEu
+		Ciphertext: BLC5O2W_Sw
+		AEAD tag: nk9brTAt5L1nird-kDbY0Q
+		Offset: 72
+		Length: 35
+		
+	Blob: data:application/octet-stream;base64,XVC1ZDvaBwAwa3kMGIkk8Dl_n3vOkC2TuSjtl-aDPU2ICgIENXVyIFQc75D1_4WtZUa1dgUGszLBzCJu_CaHCoT2CGvl83JVBLC5O2W_S2nN4I6SU--pIP3hLp5PW60wLeS9Z4q3fpA22NE=
+	
+Expected outputs:
+	Decoded JWT Payload:
+		{
+		  "files": [
+		    {
+		      "...": "DXpSzubBkS1dHbcqaUT6oVUV8HVAmyYuwzOpeOM-mxo"
+		    },
+		    {
+		      "...": "EEZmZLkr1zN576F949D6FpHrw6cnOCN0Spq1v56eYmM"
+		    },
+		    {
+		      "...": "8Q-8ucovy_NPfs_VIVc492X2aeWD-NSWms6dWwbq_UU"
+		    }
+		  ],
+		  "blob": "data:application/octet-stream;base64,XVC1ZDvaBwAwa3kMGIkk8Dl_n3vOkC2TuSjtl-aDPU2ICgIENXVyIFQc75D1_4WtZUa1dgUGszLBzCJu_CaHCoT2CGvl83JVBLC5O2W_S2nN4I6SU--pIP3hLp5PW60wLeS9Z4q3fpA22NE=",
+		  "_sd_alg": "sha-256"
+		}
+		
+	Compact issuer-signed JWT: eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJmaWxlcyI6IFt7Ii4uLiI6ICJEWHBTenViQmtTMWRIYmNxYVVUNm9WVVY4SFZBbXlZdXd6T3BlT00tbXhvIn0sIHsiLi4uIjogIkVFWm1aTGtyMXpONTc2Rjk0OUQ2RnBIcnc2Y25PQ04wU3BxMXY1NmVZbU0ifSwgeyIuLi4iOiAiOFEtOHVjb3Z5X05QZnNfVklWYzQ5MlgyYWVXRC1OU1dtczZkV3dicV9VVSJ9XSwgImJsb2IiOiAiZGF0YTphcHBsaWNhdGlvbi9vY3RldC1zdHJlYW07YmFzZTY0LFhWQzFaRHZhQndBd2Eza01HSWtrOERsX24zdk9rQzJUdVNqdGwtYURQVTJJQ2dJRU5YVnlJRlFjNzVEMV80V3RaVWExZGdVR3N6TEJ6Q0p1X0NhSENvVDJDR3ZsODNKVkJMQzVPMldfUzJuTjRJNlNVLS1wSVAzaExwNVBXNjB3TGVTOVo0cTNmcEEyMk5FPSIsICJfc2RfYWxnIjogInNoYS0yNTYifQ.4tSNrDAPBPZWYWurQw5k0pB1M5RXvXZukrkqtWYKf_Y1HigkbIbPNEqynordiV4Bqk44btZDFIf9GV_gDFxYOA
+	Final SD-JWT presentation: eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJmaWxlcyI6IFt7Ii4uLiI6ICJEWHBTenViQmtTMWRIYmNxYVVUNm9WVVY4SFZBbXlZdXd6T3BlT00tbXhvIn0sIHsiLi4uIjogIkVFWm1aTGtyMXpONTc2Rjk0OUQ2RnBIcnc2Y25PQ04wU3BxMXY1NmVZbU0ifSwgeyIuLi4iOiAiOFEtOHVjb3Z5X05QZnNfVklWYzQ5MlgyYWVXRC1OU1dtczZkV3dicV9VVSJ9XSwgImJsb2IiOiAiZGF0YTphcHBsaWNhdGlvbi9vY3RldC1zdHJlYW07YmFzZTY0LFhWQzFaRHZhQndBd2Eza01HSWtrOERsX24zdk9rQzJUdVNqdGwtYURQVTJJQ2dJRU5YVnlJRlFjNzVEMV80V3RaVWExZGdVR3N6TEJ6Q0p1X0NhSENvVDJDR3ZsODNKVkJMQzVPMldfUzJuTjRJNlNVLS1wSVAzaExwNVBXNjB3TGVTOVo0cTNmcEEyMk5FPSIsICJfc2RfYWxnIjogInNoYS0yNTYifQ.4tSNrDAPBPZWYWurQw5k0pB1M5RXvXZukrkqtWYKf_Y1HigkbIbPNEqynordiV4Bqk44btZDFIf9GV_gDFxYOA~WyJhdnkzb3pTVHFMWkRNTGxVSFFJOGpRIiwgeyJwYXRoIjogImV4YW1wbGVcXHRlc3QxLnR4dCIsICJvZmZzZXQiOiAwLCAibGVuZ3RoIjogMzYsICJoYXNoIjogImh3S21kRlJONjlXa2tLQjlaZUZtRG5id2M1eXp4dTlKMHZ4STJJLUtRcm8iLCAia2V5IjogIlJ2UFVJSWFMTFoyT2FqaDBmNUVteHF6a1R2MWhmZmlUREx6ZVptRDNsTkUiLCAiYWxnIjogM31d~WyJsV2hpaG5OLUZEZTBWdExHRW00YThnIiwgeyJwYXRoIjogImV4YW1wbGVcXHRlc3QyLnR4dCIsICJvZmZzZXQiOiAzNiwgImxlbmd0aCI6IDM2LCAiaGFzaCI6ICJqUHJEdGJnSGw1ZHlGWWVSekNickhqalIwV2lTdUdGS0Y1SW5Bei1CSThnIiwgImtleSI6ICJKTGhSUHBBR2wwdFUzYVNDY0swX0VwMi0xT0xsbWVHM2syT3h0YkdYUnNVIiwgImFsZyI6IDN9XQ~WyJ5RGFZWFpOc3Q4LS1BdDJxLW5oa2dRIiwgeyJwYXRoIjogImV4YW1wbGVcXHN1YmRcXHRlc3QzLnR4dCIsICJvZmZzZXQiOiA3MiwgImxlbmd0aCI6IDM1LCAiaGFzaCI6ICJBWXhub3NNTzJaZC1IZDMtbU1yRlFoWmRyRFZjLVhaTWthTmlZVDUxS1RNIiwgImtleSI6ICJoeHVLVF9wQTBQZjllMXo2a2p0eS00ekFMSjVLZGh0bU5YbG93VlJJUTY0IiwgImFsZyI6IDN9XQ~
+	Selected Disclosures: ~WyJhdnkzb3pTVHFMWkRNTGxVSFFJOGpRIiwgeyJwYXRoIjogImV4YW1wbGVcXHRlc3QxLnR4dCIsICJvZmZzZXQiOiAwLCAibGVuZ3RoIjogMzYsICJoYXNoIjogImh3S21kRlJONjlXa2tLQjlaZUZtRG5id2M1eXp4dTlKMHZ4STJJLUtRcm8iLCAia2V5IjogIlJ2UFVJSWFMTFoyT2FqaDBmNUVteHF6a1R2MWhmZmlUREx6ZVptRDNsTkUiLCAiYWxnIjogM31d~WyJsV2hpaG5OLUZEZTBWdExHRW00YThnIiwgeyJwYXRoIjogImV4YW1wbGVcXHRlc3QyLnR4dCIsICJvZmZzZXQiOiAzNiwgImxlbmd0aCI6IDM2LCAiaGFzaCI6ICJqUHJEdGJnSGw1ZHlGWWVSekNickhqalIwV2lTdUdGS0Y1SW5Bei1CSThnIiwgImtleSI6ICJKTGhSUHBBR2wwdFUzYVNDY0swX0VwMi0xT0xsbWVHM2syT3h0YkdYUnNVIiwgImFsZyI6IDN9XQ~WyJ5RGFZWFpOc3Q4LS1BdDJxLW5oa2dRIiwgeyJwYXRoIjogImV4YW1wbGVcXHN1YmRcXHRlc3QzLnR4dCIsICJvZmZzZXQiOiA3MiwgImxlbmd0aCI6IDM1LCAiaGFzaCI6ICJBWXhub3NNTzJaZC1IZDMtbU1yRlFoWmRyRFZjLVhaTWthTmlZVDUxS1RNIiwgImtleSI6ICJoeHVLVF9wQTBQZjllMXo2a2p0eS00ekFMSjVLZGh0bU5YbG93VlJJUTY0IiwgImFsZyI6IDN9XQ~
+	Reconstructed file hashes:
+		File 1: hwKmdFRN69WkkKB9ZeFmDnbwc5yzxu9J0vxI2I-KQro
+		File 2: jPrDtbgHl5dyFYeRzCbrHjjR0WiSuGFKF5InAz-BI8g
+		File 3: AYxnosMO2Zd-Hd3-mMrFQhZdrDVc-XZMkaNiYT51KTM
+		
+		
+		
+		
+		
+		
+		
+		
